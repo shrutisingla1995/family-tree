@@ -1,0 +1,82 @@
+<div class="container">
+    <div class="row">
+        <div class="col-5">
+            <img src="../../assets/family.jpg" width="80%" height="100%" />
+        </div>
+        <form [formGroup]="relationForm" class="col-6 relation-form" (ngSubmit)="onSubmit(relationForm,$event)" novalidate >
+            <div class="form-group choose row">
+                <div class="col-6">
+                    <input id="head" type="radio" value="head" name="relationType" formControlName="relationType">
+                    <label for="head">&nbsp;Head of the Family</label>
+                </div>
+                <div>
+                    <input id="member" type="radio" value="member"  name="relationType" formControlName="relationType" />
+                    <label for="member">&nbsp;Family Member</label>
+                </div>
+                <div *ngIf=" relationForm.controls.relationType.errors" class="text-danger required-label">
+                    <div *ngIf="!relationForm.controls.relationType.untouched">Type is required</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="name">First Name<span class="text-danger">*</span>:</label>
+                <input type="text" class="form-control" maxlength="50" placeholder="First name" formControlName="firstName"  required>
+                <div *ngIf=" relationForm.controls.firstName.errors" class="text-danger required-label">
+                    <div *ngIf="!relationForm.controls.firstName.untouched">First Name is required</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="name">Last Name<span class="text-danger">*</span>:</label>
+                <input type="text" class="form-control" maxlength="50" placeholder="Last name" formControlName="lastName"  required>
+                <div *ngIf=" relationForm.controls.lastName.errors" class="text-danger required-label">
+                    <div *ngIf="!relationForm.controls.lastName.untouched">Last Name is required</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="name">Blood Group<span class="text-danger">*</span>:</label>
+                <select formControlName="bloodGroup">
+                    <option value="" selected>Select Blood Group</option>
+                    <option value="A+">A+</option>
+                    <option value="O+">O+</option>
+                    <option value="B+">B+</option>
+                    <option value="AB+">AB+</option>
+                    <option value="A-">A-</option>
+                    <option value="O-">O-</option>
+                    <option value="B-">B-</option>
+                    <option value="AB-">AB-</option>
+                </select>                
+                <div *ngIf=" relationForm.controls.bloodGroup.errors" class="text-danger required-label">
+                    <div *ngIf="!relationForm.controls.bloodGroup.untouched">Blood group is required</div>
+                </div>
+            </div>
+            <div class="form-group" *ngIf="RelationType.value != 'head'">
+                <label for="relation">Relation:</label>
+                <select formControlName="relation">
+                    <option value="" selected>Select relation</option>
+                    <option value="daughter">Daughter</option>
+                    <option value="son">Son</option>
+                    <option value="wife">Wife</option>
+                    <option value="husband">Husband</option>
+                    <option value="sister">Sister</option>
+                    <option value="brother">Brother</option>
+                    <option value="father">Father</option>
+                    <option value="mother">Mother</option>
+                    <option value="friend">Friend</option>
+                </select>
+             </div>
+             <div class="form-group">
+                <label for="relationWith">Relation with:</label>
+                <select formControlName="relationWith">
+                    <option value="" selected>Relation with</option>
+                    <option *ngFor="let relative of allRelations" value={{relative.id}}>
+                        {{relative.firstName}} {{relative.lastName}}                          
+                    </option>
+                </select>
+             </div>
+             <button type="submit" class="btn btn-primary">Save & Next 
+                <i class="fa fa-chevron-right"></i>
+            </button>
+        </form>
+    </div>
+  
+  
+</div>

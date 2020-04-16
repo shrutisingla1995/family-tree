@@ -1,0 +1,17 @@
+nav{
+    background: #1d6eb3;
+    padding: 15px 10px;
+    margin: 0;
+    a{
+        color:white;
+        text-decoration: none;
+        margin:0 10px;
+        border:1px solid white;
+        padding: 6px 12px;
+        border-radius: 5px;
+        &.active{
+            background: white;
+            color:blue;
+        }
+    }
+}

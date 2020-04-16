@@ -1,0 +1,16 @@
+.relation-form{
+    background: #f0efff;
+    margin: 20px;
+    padding: 20px;
+    select{
+        display: block;
+        padding: 7px;
+        border-radius: 5px;
+        border: 1px solid #ced4da;
+        width: 100%;
+        color:grey;
+    }
+    .required-label{
+        font-size: 12px;
+    }
+}
